@@ -1,0 +1,58 @@
+@baseUrl = http://localhost:3000
+@token_admin = {{token_admin}}
+
+##############################################################
+# Pruebas del módulo Tienda
+# Archivo de peticiones HTTP para probar los endpoints del módulo Tienda.
+##############################################################
+
+### Crear tienda
+POST {{baseUrl}}/tienda
+Content-Type: application/json
+Authorization: Bearer {{token_admin}}
+
+{
+    "tienda_nombre": "Pet Lovers Center",
+    "tienda_direccion": "Av. Central #45-12",
+    "tienda_ciudad": "Medellín",
+    "tienda_telefono": "6041234567",
+    "tienda_activa": true
+}
+
+### Listar todas las tiendas
+GET {{baseUrl}}/tienda
+Authorization: Bearer {{token_admin}}
+
+### Listar solo tiendas activas
+GET {{baseUrl}}/tienda?activa=true
+Authorization: Bearer {{token_admin}}
+
+### Obtener tienda por ID
+GET {{baseUrl}}/tienda/1
+Authorization: Bearer {{token_admin}}
+
+### Obtener empleados de una tienda
+GET {{baseUrl}}/tienda/1/empleados
+Authorization: Bearer {{token_admin}}
+
+### Actualizar tienda
+PATCH {{baseUrl}}/tienda/1
+Content-Type: application/json
+Authorization: Bearer {{token_admin}}
+
+{
+    "tienda_telefono": "6047654321",
+    "tienda_direccion": "Carrera 80 #22-40"
+}
+
+### Activar tienda
+PATCH {{baseUrl}}/tienda/1/activar
+Authorization: Bearer {{token_admin}}
+
+### Desactivar tienda
+PATCH {{baseUrl}}/tienda/1/desactivar
+Authorization: Bearer {{token_admin}}
+
+### Eliminar tienda
+DELETE {{baseUrl}}/tienda/1
+Authorization: Bearer {{token_admin}}

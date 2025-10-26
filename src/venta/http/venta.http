@@ -1,0 +1,43 @@
+@baseUrl = http://localhost:3000
+@token_admin = {{token_admin}}
+
+##############################################################
+# Pruebas del módulo Venta
+# Archivo para verificar las operaciones CRUD del módulo de ventas.
+##############################################################
+
+### Crear venta
+POST {{baseUrl}}/venta
+Content-Type: application/json
+Authorization: Bearer {{token_admin}}
+
+{
+    "cli_id": 1,
+    "emp_id": 2,
+    "tienda_id": 1
+}
+
+### Listar ventas
+GET {{baseUrl}}/venta
+Authorization: Bearer {{token_admin}}
+
+### Obtener venta por ID
+GET {{baseUrl}}/venta/1
+Authorization: Bearer {{token_admin}}
+
+### Recalcular total de venta
+PATCH {{baseUrl}}/venta/1/recalcular
+Authorization: Bearer {{token_admin}}
+
+### Actualizar venta
+PATCH {{baseUrl}}/venta/1
+Content-Type: application/json
+Authorization: Bearer {{token_admin}}
+
+{
+    "venta_activa": false
+}
+
+### Eliminar venta
+DELETE {{baseUrl}}/venta/1
+Authorization: Bearer {{token_admin}}

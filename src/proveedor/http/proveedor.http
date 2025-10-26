@@ -1,0 +1,41 @@
+@baseUrl = http://localhost:3000
+@token_admin = {{token_admin}}
+
+##############################################################
+# Pruebas del módulo Proveedor
+# Archivo de peticiones HTTP para probar los endpoints del módulo Proveedor.
+##############################################################
+
+### Crear proveedor
+POST {{baseUrl}}/proveedor
+Content-Type: application/json
+Authorization: Bearer {{token_admin}}
+
+{
+    "prove_nombre": "Distribuidora Canina S.A.",
+    "prove_email": "contacto@canina.com",
+    "prove_telefono": "3001234567",
+    "prove_direccion": "Calle 45 #12-33 Bogotá",
+    "prove_ruc": "901234567-8"
+}
+
+### Listar proveedores
+GET {{baseUrl}}/proveedor
+Authorization: Bearer {{token_admin}}
+
+### Obtener proveedor por ID
+GET {{baseUrl}}/proveedor/1
+Authorization: Bearer {{token_admin}}
+
+### Actualizar proveedor
+PATCH {{baseUrl}}/proveedor/1
+Content-Type: application/json
+Authorization: Bearer {{token_admin}}
+
+{
+    "prove_telefono": "3019876543"
+}
+
+### Eliminar proveedor
+DELETE {{baseUrl}}/proveedor/1
+Authorization: Bearer {{token_admin}}

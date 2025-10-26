@@ -1,0 +1,41 @@
+@baseUrl = http://localhost:3000
+@token_admin = {{token_admin}}
+
+##############################################################
+# Pruebas del módulo Inventario
+# Este archivo contiene las peticiones HTTP necesarias
+# para probar las rutas del controlador Inventario.
+##############################################################
+
+### Crear inventario
+POST {{baseUrl}}/inventario
+Content-Type: application/json
+Authorization: Bearer {{token_admin}}
+
+{
+    "inv_cantidad": 20,
+    "inv_costo_unitario": 25000,
+    "prod_id": 1,
+    "tienda_id": 2
+}
+
+### Listar inventarios
+GET {{baseUrl}}/inventario
+Authorization: Bearer {{token_admin}}
+
+### Obtener inventario por ID
+GET {{baseUrl}}/inventario/1
+Authorization: Bearer {{token_admin}}
+
+### Actualizar inventario
+PATCH {{baseUrl}}/inventario/1
+Content-Type: application/json
+Authorization: Bearer {{token_admin}}
+
+{
+    "inv_cantidad": 25
+}
+
+### Eliminar inventario
+DELETE {{baseUrl}}/inventario/1
+Authorization: Bearer {{token_admin}}

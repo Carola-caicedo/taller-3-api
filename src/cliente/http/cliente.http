@@ -1,0 +1,47 @@
+@baseUrl = http://localhost:3000
+@token_admin = {{token_admin}}
+@token_cliente = {{token_cliente}}
+
+##############################################################
+# Pruebas del módulo Cliente
+# Este archivo contiene las solicitudes HTTP para verificar
+# los endpoints del controlador Cliente.
+# Usa variables para el token del cliente o del admin según corresponda.
+##############################################################
+
+### Crear cliente (público)
+POST {{baseUrl}}/cliente
+Content-Type: application/json
+
+{
+    "cli_nombre": "Juan Pérez",
+    "cli_correo": "juan@example.com",
+    "cli_telefono": "3001234567",
+    "cli_direccion": "Calle 45 #10-22",
+    "cli_contrasena": "cliente123"
+}
+
+### Listar todos los clientes (solo admin)
+GET {{baseUrl}}/cliente
+Authorization: Bearer {{token_admin}}
+
+### Obtener cliente por ID (cliente o admin)
+GET {{baseUrl}}/cliente/1
+Authorization: Bearer {{token_cliente}}
+
+### Actualizar cliente (cliente o admin)
+PATCH {{baseUrl}}/cliente/1
+Content-Type: application/json
+Authorization: Bearer {{token_cliente}}
+
+{
+    "cli_nombre": "Juan Pérez Actualizado"
+}
+
+### Eliminar cliente (solo admin)
+DELETE {{baseUrl}}/cliente/1
+Authorization: Bearer {{token_admin}}
+
+### Ver perfil personal (solo cliente)
+GET {{baseUrl}}/cliente/perfil/me
+Authorization: Bearer {{token_cliente}}

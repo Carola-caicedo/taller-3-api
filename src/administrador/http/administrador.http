@@ -1,0 +1,49 @@
+@baseUrl = http://localhost:3000
+@token_admin = {{token_admin}}
+
+##############################################################
+# Pruebas del módulo Administrador
+# Archivo para realizar peticiones HTTP a los endpoints
+# definidos en el controlador de Administradores.
+# 
+# Cada sección prueba una operación CRUD protegida por JWT.
+# Usa el token de un usuario con rol de administrador.
+##############################################################
+
+### Crear administrador
+# Crea un nuevo administrador con los datos proporcionados.
+# Requiere autenticación mediante token JWT.
+POST {{baseUrl}}/administrador
+Content-Type: application/json
+Authorization: Bearer {{token_admin}}
+
+{
+    "adm_nombre": "Nuevo Admin",
+    "adm_correo": "nuevoadmin@correo.com",
+    "adm_contrasena": "superseguro123"
+}
+
+### Listar administradores
+# Obtiene todos los administradores registrados en el sistema.
+GET {{baseUrl}}/administrador
+Authorization: Bearer {{token_admin}}
+
+### Obtener administrador por ID
+# Devuelve la información del administrador con el ID indicado.
+GET {{baseUrl}}/administrador/1
+Authorization: Bearer {{token_admin}}
+
+### Actualizar administrador
+# Modifica los datos de un administrador existente.
+PATCH {{baseUrl}}/administrador/1
+Content-Type: application/json
+Authorization: Bearer {{token_admin}}
+
+{
+    "adm_nombre": "Administrador Actualizado"
+}
+
+### Eliminar administrador
+# Elimina el administrador con el ID especificado.
+DELETE {{baseUrl}}/administrador/1
+Authorization: Bearer {{token_admin}}

@@ -1,0 +1,59 @@
+@baseUrl = http://localhost:3000
+@token_admin = {{token_admin}}
+@token_empleado = {{token_empleado}}
+
+##############################################################
+# Pruebas del módulo Empleado
+# Archivo de solicitudes HTTP para probar el CRUD completo
+# y las rutas personalizadas del módulo Empleado.
+##############################################################
+
+### Crear empleado (solo admin)
+POST {{baseUrl}}/empleado
+Content-Type: application/json
+Authorization: Bearer {{token_admin}}
+
+{
+    "emp_nombre": "Laura Gómez",
+    "emp_email": "laura@example.com",
+    "emp_contrasena": "Empleado@123",
+    "emp_cargo": "Vendedora",
+    "tienda_id": 1
+}
+
+### Listar empleados (admin o empleado)
+GET {{baseUrl}}/empleado
+Authorization: Bearer {{token_admin}}
+
+### Obtener empleado por ID
+GET {{baseUrl}}/empleado/1
+Authorization: Bearer {{token_admin}}
+
+### Buscar empleados por tienda
+GET {{baseUrl}}/empleado/tienda/1
+Authorization: Bearer {{token_admin}}
+
+### Buscar empleados por cargo
+GET {{baseUrl}}/empleado/cargo/Vendedora
+Authorization: Bearer {{token_admin}}
+
+### Actualizar empleado (solo admin)
+PATCH {{baseUrl}}/empleado/1
+Content-Type: application/json
+Authorization: Bearer {{token_admin}}
+
+{
+    "emp_cargo": "Supervisora"
+}
+
+### Activar empleado
+PATCH {{baseUrl}}/empleado/1/activar
+Authorization: Bearer {{token_admin}}
+
+### Desactivar empleado
+PATCH {{baseUrl}}/empleado/1/desactivar
+Authorization: Bearer {{token_admin}}
+
+### Eliminar empleado
+DELETE {{baseUrl}}/empleado/1
+Authorization: Bearer {{token_admin}}
