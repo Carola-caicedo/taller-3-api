@@ -8,6 +8,7 @@
 # y las rutas personalizadas del módulo Empleado.
 ##############################################################
 
+
 ### Crear empleado (solo admin)
 POST {{baseUrl}}/empleado
 Content-Type: application/json
