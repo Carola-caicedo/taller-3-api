@@ -1,0 +1,41 @@
+@baseUrl = http://localhost:3000
+@token_admin = {{token_admin}}
+
+##############################################################
+# Pruebas del módulo DetalleFactura
+# Archivo de pruebas HTTP para los endpoints CRUD del módulo.
+# Requiere autenticación JWT en operaciones sensibles.
+##############################################################
+
+### Crear detalle de factura
+POST {{baseUrl}}/detalle-factura
+Content-Type: application/json
+Authorization: Bearer {{token_admin}}
+
+{
+    "venta_id": 1,
+    "producto_id": 3,
+    "det_cantidad": 2,
+    "det_precio_unitario": 15000
+}
+
+### Listar todos los detalles de factura
+GET {{baseUrl}}/detalle-factura
+Authorization: Bearer {{token_admin}}
+
+### Obtener detalle de factura por ID
+GET {{baseUrl}}/detalle-factura/1
+Authorization: Bearer {{token_admin}}
+
+### Actualizar detalle de factura
+PATCH {{baseUrl}}/detalle-factura/1
+Content-Type: application/json
+Authorization: Bearer {{token_admin}}
+
+{
+    "det_cantidad": 3
+}
+
+### Eliminar detalle de factura
+DELETE {{baseUrl}}/detalle-factura/1
+Authorization: Bearer {{token_admin}}

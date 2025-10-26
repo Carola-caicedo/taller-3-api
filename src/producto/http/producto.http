@@ -1,0 +1,41 @@
+@baseUrl = http://localhost:3000
+@token_admin = {{token_admin}}
+
+##############################################################
+# Pruebas del módulo Producto
+# Archivo de pruebas HTTP para verificar las operaciones CRUD.
+##############################################################
+
+### Crear producto
+POST {{baseUrl}}/producto
+Content-Type: application/json
+Authorization: Bearer {{token_admin}}
+
+{
+    "prod_nombre": "Collar de cuero",
+    "prod_descripcion": "Collar resistente para perro grande",
+    "prod_precio": 25000,
+    "prod_stock": 30,
+    "prove_id": 1
+}
+
+### Listar productos
+GET {{baseUrl}}/producto
+Authorization: Bearer {{token_admin}}
+
+### Obtener producto por ID
+GET {{baseUrl}}/producto/1
+Authorization: Bearer {{token_admin}}
+
+### Actualizar producto
+PATCH {{baseUrl}}/producto/1
+Content-Type: application/json
+Authorization: Bearer {{token_admin}}
+
+{
+    "prod_precio": 28000
+}
+
+### Eliminar producto
+DELETE {{baseUrl}}/producto/1
+Authorization: Bearer {{token_admin}}

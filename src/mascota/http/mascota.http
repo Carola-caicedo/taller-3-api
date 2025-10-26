@@ -1,0 +1,46 @@
+@baseUrl = http://localhost:3000
+@token_cliente = {{token_cliente}}
+@token_admin = {{token_admin}}
+
+##############################################################
+# Pruebas del módulo Mascota
+# Archivo de peticiones HTTP para probar los endpoints del módulo Mascota.
+##############################################################
+
+### Crear mascota
+POST {{baseUrl}}/mascota
+Content-Type: application/json
+Authorization: Bearer {{token_cliente}}
+
+{
+    "mascota_nombre": "Firulais",
+    "mascota_especie": "Perro",
+    "mascota_raza": "Labrador",
+    "mascota_edad": 3,
+    "cli_id": 1
+}
+
+### Listar todas las mascotas
+GET {{baseUrl}}/mascota
+Authorization: Bearer {{token_admin}}
+
+### Obtener mascota por ID
+GET {{baseUrl}}/mascota/1
+Authorization: Bearer {{token_admin}}
+
+### Obtener mascotas por cliente
+GET {{baseUrl}}/mascota/cliente/1
+Authorization: Bearer {{token_cliente}}
+
+### Actualizar mascota
+PATCH {{baseUrl}}/mascota/1
+Content-Type: application/json
+Authorization: Bearer {{token_cliente}}
+
+{
+    "mascota_edad": 4
+}
+
+### Eliminar mascota
+DELETE {{baseUrl}}/mascota/1
+Authorization: Bearer {{token_admin}}

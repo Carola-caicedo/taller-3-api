@@ -1,3 +1,9 @@
+/**
+ * Pruebas unitarias para el controlador principal (AppController).
+ * 
+ * Verifica que la aplicación retorne correctamente el mensaje esperado.
+ */
+
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -15,7 +21,7 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
+    it('debería retornar "Hello World!"', () => {
       expect(appController.getHello()).toBe('Hello World!');
     });
   });
